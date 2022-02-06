@@ -1,26 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <AppHeader @openLoginModal="isLoginOpen = true" />
+  <div class="w-full flex">
+    <router-view></router-view>
+  </div>
+  <LoginModal v-if="isLoginOpen" @closeLoginModal="isLoginOpen = false" />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppHeader from "./components/AppHeader.vue";
+import LoginModal from "./components/LoginModal.vue";
 
 export default {
-  name: 'App',
+  name: "app",
+  data() {
+    return {
+      isLoginOpen: false,
+    };
+  },
   components: {
-    HelloWorld
-  }
-}
+    AppHeader,
+    LoginModal,
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
